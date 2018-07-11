@@ -31,7 +31,7 @@ sleep 2
 echo "*                 *"
 echo "*******************"
 echo "Rebooting"
-cat LPG-LinuxGuide.txt >> /.bashrc
+cat LPG-LinuxGuide.txt >> /root/.bashrc
 sleep 2
 reboot
 
