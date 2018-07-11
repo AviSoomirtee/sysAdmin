@@ -43,6 +43,10 @@ alias vim='ed'
 alias w='echo x, y and z'
 alias who='echo what?'
 alias zsh='echo youAreHere/ '
-alias alias="echo Toujours to bizin lire to script bien XDD"
+alias alias='echo Toujours to bizin lire to script bien XDD'
 alias yum='echo To croir ton saP! LOL'
-
+alias history='echo To pas pou gner'
+alias yum='echo To ti croir to pou saP!'
+alias chsh='echo Nope nope'
+alias reboot='echo non blier'
+alias shutdown='echo mo pa pu teigne kiena'
