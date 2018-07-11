@@ -44,4 +44,5 @@ alias w='echo x, y and z'
 alias who='echo what?'
 alias zsh='echo youAreHere/ '
 alias alias="echo Toujours to bizin lire to script bien XDD"
+alias yum='echo To croir ton saP! LOL'
 
