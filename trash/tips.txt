@@ -5,4 +5,7 @@ perl -i.bak -n -e 'print if /\s/' strings #remove blank lines and make backup
 rev #reverse a string
 sed -e 's/\bthe\b/why/g' words #change the to why \b for boundary, making sure to change only a complete word.
 sed -e 's/\bthe\b/why/gi' #the i for ignore case
+chmod 0000 /downloads #to lock download
+chmod 0755 /downloads #to unlock
+vim +X filename #or use :X before saving a file to set password to it
 
