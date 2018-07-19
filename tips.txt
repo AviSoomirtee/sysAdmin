@@ -1,0 +1,8 @@
+sed -i '7 d' numbers  #remove the 7th line in numbers
+sed -i '7,9 d' numbers #remove 7 to 9
+sed -i '/^$/d' strings #remove all blank line in string
+perl -i.bak -n -e 'print if /\s/' strings #remove blank lines and make backup
+rev #reverse a string
+sed -e 's/\bthe\b/why/g' words #change the to why \b for boundary, making sure to change only a complete word.
+sed -e 's/\bthe\b/why/gi' #the i for ignore case
+
