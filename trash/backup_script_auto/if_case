@@ -1,0 +1,42 @@
+#!/bin/bash
+
+ERR_500="[error] cannot connect to gate"
+ERR_SSL="[error] ssl certificate missing"
+
+file="/home/avi/Desktop/lbn/https/cacert.pem"
+
+STATE='0'
+
+read ERROR <<< $(grep "error" /home/avi/Desktop/lbn/script/inventaire/log/inventaire_2.log)
+#| cut -d] -f3 )
+
+if [ "$ERROR" = "$ERR_500" ]
+then
+    echo "Maybe need proxy"
+    STATE='1'
+elif [ "$ERROR" = "$ERR_SSL" ]
+then
+	#file="/home/avi/Desktop/lbn/https/cacert.pem"
+	if [ ! -f "$file" ]
+	then
+		    echo "$0: File '${file}' not found."
+		    echo "Need to copy certificate."
+		    STATE='2'
+        else echo "Certificate Cacert.pem already exist."
+        fi
+
+else
+    echo "No errors were found."
+fi
+
+case $STATE in
+	1)
+		echo "Going to add proxy"
+		;;
+	2)
+		echo "Adding certificate"
+		;;
+	0)
+		echo "Nothing to do"
+		;;
+esac

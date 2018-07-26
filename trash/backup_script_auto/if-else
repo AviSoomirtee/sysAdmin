@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ERR_500="[error] cannot connect to gate"
+ERR_SSL="[error] ssl certificate missing"
+
+read ERROR <<< $(grep "error" /home/avi/Desktop/lbn/script/inventaire/log/inventaire_2.log)
+#| cut -d] -f3 )
+
+if [ "$ERROR" = "$ERR_500" ]
+then
+    echo "Maybe need proxy"
+elif [ "$ERROR" = "$ERR_SSL" ]
+then
+    echo "Need to copy certificate."
+else
+    echo "No errors were found."
+fi
+
