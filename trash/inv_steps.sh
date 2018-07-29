@@ -118,6 +118,11 @@ fi
 
 ######################################################### while should start here
 
+
+
+
+
+
 ############## checking if cacert is present #########
 
 if [ check_crt () true ]
@@ -153,7 +158,7 @@ ERRORR = get_error ()
 
 if [ -n ERRORR ]
 then
-	echo "Ther`s no error"
+	echo "Theres no error"
 else
 	echo "Error found, here it is."
 	echo $ERRORR
@@ -173,9 +178,10 @@ then
 			solution="added proxy: $PROXY"
 			echo "Cron will be added."
 			set_cron ()
-			good=true	
+			good=true
+		fi	
 	else 
-		echo "There`s no proxy, searching nexxt solution"
+		echo "Theres no proxy, searching nexxt solution"
 		if [ telnet_gate () = true ]
 		then
 			
