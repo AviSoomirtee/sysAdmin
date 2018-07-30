@@ -5,9 +5,10 @@ echo Scritp started.
 usage () {
 
 	echo "This script is used to automatically correct the inventory errors."
+	echo " "
 	echo "How to use it: "
-	echo "		--run-all	will make the script loop through a list of servers from the host.txt file."
-	echo "  	--run <hostname>	will run only for this server"
+	echo "	--run-all	will make the script loop through a list of servers from the host.txt file."
+	echo "	--run <hostname>	will run only for this server"
 
 }
 echo  " "
