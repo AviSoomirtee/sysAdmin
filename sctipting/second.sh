@@ -42,8 +42,38 @@ function check_proxy {
 	fi
 }
 
+function test_proxy () { #add proxy in agent and run inventaire/ when call add proxy next to it
+	PROX =$1
+	echo "Adding proxy to agent"
+	echo "sudo -i" >> $BASH
+	echo "cd /usr/local/linkbynet/script/inventaire/etc/" >> $BASH
+	echo "echo $PROX >> sinventory-agent.cfg" >> $BASH
+	echo "sh inventaire.sh --no-timer" >> $BASH
+	echo "exit" >> $BASH
+	echo "exit" >> $BASH
+	cat $BASH | ssh -t -t $HOST
+	echo " "
+	echo "Proxy added and inventaire launched."
+	echo " "
+	echo "Verrifying error."
+	
+	read ERRORR <<< $(sed -n 2p $CMD | ssh -t $HOST)
+	echo " "
 
-function add_proxy () {
+	if [ -z "$ERRORR" ]
+	then
+		echo "Log successfull"
+		return 0
+	else
+		echo "Task failed."
+		return 1
+	fi
+
+
+}
+
+
+function add_cron_proxy () {
 	proXy=$1
 	echo "Adding proxy..."
 	echo "sudo -i" > $BASH
@@ -52,13 +82,11 @@ function add_proxy () {
 	TEMP_PROXY="$MIN $HOUR * * * root echo $PROXY"
 	TEMP2_PROXY="$TEMP_PROXY >> /usr/local/linkbynet/script/inventaire/etc/ocsinventory-agent.cfg"
 	echo "echo '$TEMP2_PROXY'  >> inventaire_proxy " >> $BASH
-	echo "cd " >> $BASH
-	echo "echo '$PROXY' >> /usr/local/linkbynet/script/inventaire/etc/ocsinventory-agent.cfg" >> $BASH
-	echo "cd /usr/local/linkbynet/script/inventaire/" >> $BASH
-	echo "sh inventaire.sh --no-timer" >> $BASH
 	echo "exit" >> $BASH
 	echo "exit" >> $BASH
 	cat $BASH | ssh -t -t $HOST
+	echo " "
+	echo "Cron job added for proxy."
 	
 }
 
